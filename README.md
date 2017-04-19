@@ -13,15 +13,21 @@ npm install nonin-3230-ble --save
 ```javascript
 const Nonin3230 = require('nonin-3230-ble');
 
-Nonin3230.discover((pulseOxymeter) => {
-  pulseOxymeter.connectAndSetup((error) => {
+Nonin3230.discover((pulseOximeter) => {
+  pulseOximeter.connectAndSetup((error) => {
     if (error) {
       console.error(error);
     }
+    let counter = 0;
     // receive a new measurement every second
-    pulseOxymeter.on('data', (data) => {
+    pulseOximeter.on('data', (data) => {
+      counter++;
       console.log(data);
-      // data: { counter: int, pulseRate: int, oxygenSaturation: int }
+      // { counter: int, pulseRate: int, oxygenSaturation: int, status: object }
+      if (counter > 15) {
+        pulseOximeter.stopMeasurement(() => console.log('stopped'));
+      }
+
     });
   });
 });
