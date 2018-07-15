@@ -25,7 +25,7 @@ Nonin3230.discover((pulseOximeter) => {
       console.log(data);
       // { counter: int, pulseRate: int, oxygenSaturation: int, status: object }
       if (counter > 15) {
-        pulseOximeter.stopMeasurement(() => console.log('stopped'));
+        pulseOximeter.completeMeasurement(() => console.log('stopped'));
       }
 
     });
