@@ -3,6 +3,8 @@ nonin-3230-ble
 
 A Node.js lib to abstract the Nonin 3230 BLE pulse oxymeter, using [noble-device](https://github.com/sandeepmistry/noble-device)
 
+This library only supports the proprietary Nonin Oximetry Service, and not the standard Bluetooth SIG Pulse Oximeter Service.
+
 ## Install
 ```
 npm install nonin-3230-ble --save
